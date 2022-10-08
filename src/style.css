@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+input {
+  @apply border rounded p-1 px-1.5 border-gray-light hover:border-gray active:border-gray-dark active:border
+}
