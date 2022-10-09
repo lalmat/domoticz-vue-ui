@@ -2,7 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+body { font-family: "Montserrat", sans-serif; }
+
+html {
+  background: url(https://www.pristina.org/wp-content/uploads/2015/12/A-Fotografia-de-Corwin-Prescott-04-700x467.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 input {
-  @apply border rounded p-1 px-1.5 border-gray-light hover:border-gray active:border-gray-dark active:border
+  @apply border rounded-md p-1 px-1.5 border-0 active:border-slate-700 active:border text-lg
+}
+
+button {
+  @apply border rounded p-1 px-1.5
+}
+
+button.primary {
+  @apply bg-slate-700 hover:bg-slate-800 text-white
 }

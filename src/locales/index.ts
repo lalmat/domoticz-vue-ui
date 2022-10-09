@@ -11,6 +11,7 @@ const messages = {
 // 2. Create i18n instance with options
 export const i18n = createI18n({
   locale: 'fr',
+  legacy: false,
   fallbackLocale: 'en',
   messages,
 })
