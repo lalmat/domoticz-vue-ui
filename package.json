@@ -15,6 +15,7 @@
     "@ncisrc/cookies-storage": "github:ncisrc/cookies-storage",
     "@rushstack/eslint-patch": "^1.2.0",
     "@vue/eslint-config-typescript": "^11.0.2",
+    "dayjs": "^1.11.5",
     "domoticz-api-linker": "^0.2.0",
     "pinia": "^2.0.22",
     "vue": "^3.2.37",

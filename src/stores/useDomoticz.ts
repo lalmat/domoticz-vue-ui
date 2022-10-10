@@ -1,6 +1,7 @@
 import { Domoticz } from "domoticz-api-linker/src/index.js"
 import { cookiesStorage } from "@ncisrc/cookies-storage"
 import { defineStore } from "pinia"
+import dayjs from "dayjs"
 
 export const useDomoticz = defineStore("domoticz", {
   state: () => {
@@ -15,11 +16,12 @@ export const useDomoticz = defineStore("domoticz", {
         password: '',
         rememberMe: true
       },
+      datetime: new Date,
       version: null,
       datetimes : null,
       handlers: {
         version: null,
-        datetimes: null
+        datetime: null
       }
     }
   },
@@ -52,19 +54,27 @@ export const useDomoticz = defineStore("domoticz", {
       return success
     },
 
-    async refreshVersion() {
-      if (this.handlers.version == null) {
-        this.handlers.version = setInterval(this.api.refreshVersion, 3600000)
-      }
+    // ------------------------------------------------------------------------
+
+    async syncVersion() {
       this.version = await this.api.systemManager.version();
     },
 
-    async refreshDatetimes() {
-      if (this.handlers.datetimes == null) {
-        this.handlers.datetimes = setInterval(this.api.refreshDatetimes, 5000)
-      }
+    async syncDatetimes() {
       this.datetimes = await this.api.systemManager.datetimes();
+      this.datetime = this.datetimes.ServerTime;
+
+      if (this.handlers.datetime != null) {
+        clearInterval(this.handlers.datetime);
+      }
+
+      this.handlers.datetime = setInterval(() => {
+        this.datetime = dayjs(this.datetime).add(1, "seconds").format('YYYY-MM-DD HH:mm:ss')
+      }, 1000);
+
     },
+
+    // ------------------------------------------------------------------------
 
     async settingsSave() {
       const options = {

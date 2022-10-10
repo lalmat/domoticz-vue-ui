@@ -5,15 +5,24 @@ import { useDomoticz } from "../stores/useDomoticz"
 import PanelToday from "../components/PanelToday.vue"
 const domoticz = useDomoticz()
 
-onMounted(async () => {
-  domoticz.refreshVersion()
+onMounted(() => {
+  domoticz.syncVersion()
+  domoticz.syncDatetimes()
 })
 </script>
 
 <template>
   <div class="rounded-xl drop-shadow-lg bg-white/70 m-8 fixed bottom-0 top-0 left-0 right-0">
     <div class="grid grid-cols-7 grid-row-4 gap-4 fixed bottom-0 top-0 left-0 right-0 m-8">
-      <div class="rounded bg-white/50 col-span-2 relative"><PanelToday /></div>
+      <div class="rounded bg-white/50 col-span-2 relative">
+        <PanelToday
+          v-if="domoticz.datetimes"
+          :datetime="domoticz.datetime"
+          :sunset="domoticz.datetimes.Sunset"
+          :sunrise="domoticz.datetimes.Sunrise"
+          :day-duration="domoticz.datetimes.dayLength"
+        />
+      </div>
       <div class="rounded bg-white/50">02</div>
       <div class="rounded bg-white/50">03</div>
       <div class="rounded bg-white/50 row-span-2 col-span-3">04</div>
