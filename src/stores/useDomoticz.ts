@@ -19,6 +19,8 @@ export const useDomoticz = defineStore("domoticz", {
       datetime: new Date,
       version: null,
       datetimes : null,
+      devicesIdx: [],
+      devices: [],
       handlers: {
         version: null,
         datetime: null
@@ -71,7 +73,19 @@ export const useDomoticz = defineStore("domoticz", {
       this.handlers.datetime = setInterval(() => {
         this.datetime = dayjs(this.datetime).add(1, "seconds").format('YYYY-MM-DD HH:mm:ss')
       }, 1000);
+    },
 
+    async syncDevices() {
+      this.devices = (await this.api.deviceManager.items()).result;
+    },
+
+    findDevice(idx: number) {
+      return this.devices.find( (device) => device.idx == idx);
+    },
+
+    async deviceToggle(idx) {
+      await this.api.deviceManager.toggle(idx);
+      this.syncDevices();
     },
 
     // ------------------------------------------------------------------------

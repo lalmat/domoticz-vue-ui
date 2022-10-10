@@ -4,7 +4,7 @@ import { useI18n } from "vue-i18n"
 const { t } = useI18n({})
 
 const props = defineProps({
-  datetime: { type: Date, default: new Date() },
+  datetime: { type: String, default: "2022-01-01 00:00:00" },
   dayDuration: { type: String, default: "12:00" },
   sunset: { type: String, default: "06:00" },
   sunrise: { type: String, default: "18:00" },

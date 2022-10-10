@@ -1,13 +1,15 @@
 <script lang="ts" setup>
-import { onMounted } from "vue"
+import PanelDatetime from "../components/PanelDatetime.vue"
+import PanelSwitch from "../components/PanelSwitch.vue"
 
+import { onMounted } from "vue"
 import { useDomoticz } from "../stores/useDomoticz"
-import PanelToday from "../components/PanelToday.vue"
 const domoticz = useDomoticz()
 
 onMounted(() => {
   domoticz.syncVersion()
   domoticz.syncDatetimes()
+  domoticz.syncDevices()
 })
 </script>
 
@@ -15,7 +17,7 @@ onMounted(() => {
   <div class="rounded-xl drop-shadow-lg bg-white/70 m-8 fixed bottom-0 top-0 left-0 right-0">
     <div class="grid grid-cols-7 grid-row-4 gap-4 fixed bottom-0 top-0 left-0 right-0 m-8">
       <div class="rounded bg-white/50 col-span-2 relative">
-        <PanelToday
+        <PanelDatetime
           v-if="domoticz.datetimes"
           :datetime="domoticz.datetime"
           :sunset="domoticz.datetimes.Sunset"
@@ -40,7 +42,15 @@ onMounted(() => {
       <div class="rounded bg-white/50">16</div>
       <div class="rounded bg-white/50">17</div>
       <div class="rounded bg-white/50">18</div>
-      <div class="rounded bg-white/50">19</div>
+      <div class="rounded bg-white/50 relative">
+        <PanelSwitch
+          icon="/theme/icons/light_bulb.svg"
+          label="Lumière Bureau"
+          color-on="rgba(200,200,0,0.5)"
+          idx="5"
+          @click="domoticz.deviceToggle(5)"
+        />
+      </div>
     </div>
 
     <div v-if="domoticz.version" class="text-slate-500 absolute bottom-1 w-full text-center font-light italic text-sm">
