@@ -1,7 +1,7 @@
 import {createI18n} from 'vue-i18n';
 
-import { fr } from "./fr/index.js"
-import { en } from './en/index.js';
+import { fr } from "./fr/index"
+import { en } from './en/index';
 
 const messages = {
   en,

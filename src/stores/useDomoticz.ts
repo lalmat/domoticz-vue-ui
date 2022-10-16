@@ -1,4 +1,6 @@
 import { DomoticzVersion } from './../interfaces/DomoticzVersions';
+      // eslint-disable-next-line
+      // @ts-ignore: ban-ts-comment
 import { Domoticz } from "domoticz-api-linker/src/index.js"
 import { defineStore } from "pinia"
 import dayjs from "dayjs"
@@ -50,6 +52,8 @@ export const useDomoticz = defineStore("domoticz", {
         username : this.server.username,
         password : this.server.password
       });
+      // eslint-disable-next-line
+      // @ts-ignore: ban-ts-comment
       const success = await this.api.systemManager.checkCredentials();
       if (success) {
         this.connected = true;
@@ -61,10 +65,14 @@ export const useDomoticz = defineStore("domoticz", {
     // ------------------------------------------------------------------------
 
     async syncVersion() {
+      // eslint-disable-next-line
+      // @ts-ignore: ban-ts-comment
       this.version = <DomoticzVersion> await this.api.systemManager.version();
     },
 
     async syncDatetimes() {
+      // eslint-disable-next-line
+      // @ts-ignore: ban-ts-comment
       this.datetimes = <DomoticzDatetimes> await this.api.systemManager.datetimes();
       this.datetime = this.datetimes.ServerTime;
 
@@ -82,6 +90,8 @@ export const useDomoticz = defineStore("domoticz", {
 
       this.syncingDevices = true;
       if (this.handlers.devices) clearTimeout(this.handlers.devices)
+      // eslint-disable-next-line
+      // @ts-ignore: ban-ts-comment
       this.devices = <DomoticzDevice[]> (await this.api.deviceManager.items()).result;
 
       this.handlers.devices = setTimeout(this.syncDevices, 2000);
@@ -89,6 +99,8 @@ export const useDomoticz = defineStore("domoticz", {
     },
 
     async toggleDevice(idx: string) {
+      // eslint-disable-next-line
+      // @ts-ignore: ban-ts-comment
       await this.api.deviceManager.toggle(idx);
       this.syncDevices();
     },

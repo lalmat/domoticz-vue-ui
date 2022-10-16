@@ -37,9 +37,9 @@
       "slotClass": "rounded bg-white/50 row-span-2 col-span-3"
     },
     {
-      "type": "weather-station",
+      "type": "openweather-station",
       "name": "Station Météo",
-      "idx" : "",
+      "icon": "/theme/icons/openweather-station/",
       "refresh": 0,
       "slotClass" : "rounded bg-white/50 row-span-2 col-span-2"
     },
@@ -91,8 +91,8 @@
       "slotClass": "rounded bg-white/50"
     },
     {
-      "type": "home-scene",
-      "icon": "eco-power",
+      "type": "home-switch",
+      "icon": "/theme/icons/home-switch/bulb",
       "name": "Fermer Volets",
       "idx": "3",
       "refresh": 0,
@@ -107,7 +107,7 @@
       "slotClass": "rounded bg-white/50"
     },
     {
-      "type": "home-switch",
+      "type": "home-security-panel",
       "icon": "/theme/icons/home-switch/bulb",
       "name": "Verouillage Système",
       "idx": "",
@@ -154,5 +154,15 @@
       "refresh": 0,
       "slotClass": "rounded bg-white/50"
     }
-  ]
+  ],
+  "openWeatherIdx": {
+    "ActualWeatherIdx": "523",
+    "TempHumBaroIdx": "524",
+    "FeelingTempIdx": "525",
+    "WindIdx": "526",
+    "UvIdx": "527",
+    "PrevJ1Idx": "689",
+    "PrevJ2Idx": "696",
+    "PrevJ3Idx": "703"
+  }
 }

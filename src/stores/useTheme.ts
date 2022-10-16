@@ -1,5 +1,6 @@
 import { themeDevice } from './../interfaces/ThemeDevice';
 import { defineStore } from "pinia"
+import { DomoticzOpenWeather } from '../interfaces/DomoticzOpenWeather';
 
 export const useTheme = defineStore("theme", {
   state: () => {
@@ -14,7 +15,8 @@ export const useTheme = defineStore("theme", {
       name             : '',
       bgPanelClass     : '',
       devicesGridClass : '',
-      devices          : <themeDevice[]>[]
+      devices          : <themeDevice[]>[],
+      openWeather      : {} as DomoticzOpenWeather
     }
   },
 
@@ -39,6 +41,7 @@ export const useTheme = defineStore("theme", {
       this.classes.bgPanel     = this.stringToClass(data.classes.bgPanel)
       this.classes.devicesGrid = this.stringToClass(data.classes.devicesGrid)
       this.classes.version     = this.stringToClass(data.classes.version)
+      this.openWeather = <DomoticzOpenWeather> data.openWeatherIdx
       this.devices = <themeDevice[]> data.devices
 
       this.loaded = true
@@ -49,6 +52,8 @@ export const useTheme = defineStore("theme", {
       const result = {}
       for(const key of items) {
         console.log(key);
+        // eslint-disable-next-line
+        // @ts-ignore: ban-ts-comment
         result[key] = true;
       }
       console.log(result);

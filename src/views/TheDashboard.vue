@@ -17,14 +17,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="theme.loaded" :class="theme.classes.bgPanel">
+  <div
+    v-if="theme.loaded"
+    :class="theme.classes.bgPanel"
+  >
     <div :class="theme.classes.devicesGrid">
-      <div v-for="(device, index) in theme.devices" :key="index" :class="device.slotClass">
+      <div
+        v-for="(device, index) in theme.devices"
+        :key="index"
+        :class="device.slotClass"
+      >
         <PanelItem :device="device" />
       </div>
     </div>
 
-    <div v-if="domoticz.version" :class="theme.classes.version">
+    <div
+      v-if="domoticz.version"
+      :class="theme.classes.version"
+    >
       Domoticz v{{ domoticz.version.version }} - Running on
       <span class="uppercase">{{ domoticz.version.SystemName }}</span> -
       {{ domoticz.version.HaveUpdate ? "Update pending" : "Up to date" }}

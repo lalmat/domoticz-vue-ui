@@ -1,4 +1,4 @@
-import theLogin from "../en/theLogin.js"
+import theLogin from "./theLogin"
 
 export const en = {
   theLogin,

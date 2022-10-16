@@ -3,6 +3,7 @@ import { themeDevice } from "../interfaces/ThemeDevice";
 import ServerDatetimes from "./ServerDatetimes.vue";
 import HomeSwitch from "./HomeSwitch.vue";
 import HomeDoor from "./HomeDoor.vue";
+import OpenWeatherStation from "./OpenWeatherStation.vue";
 
 interface Props { device: themeDevice }
 
@@ -13,5 +14,7 @@ defineProps<Props>();
     <ServerDatetimes v-if="device.type === 'server-datetimes'" :device="device" />
     <HomeSwitch v-if="device.type === 'home-switch'" :device="device" />
     <HomeDoor v-if="device.type === 'home-door'" :device="device" />
+
+    <OpenWeatherStation v-if="device.type === 'openweather-station'" :device="device" />
   </div>
 </template>

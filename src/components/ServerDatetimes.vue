@@ -55,16 +55,16 @@ const time = computed(() => {
 </template>
 <style>
 .dz-server-dt-date {
-  margin-top:1vh;
+  margin-top: 1.5vh;
   font-size: 1.5vw;
 }
 .dz-server-dt-time {
-  margin-top:0.5vh;
+  margin-top:1vh;
   font-size: 3vw;
   font-weight: bold;
 }
 .dz-server-dt-details {
-  margin-top:0.5vh;
+  margin-top:1vh;
 }
 .dz-server-dt-icon {
   height:2.4vw;

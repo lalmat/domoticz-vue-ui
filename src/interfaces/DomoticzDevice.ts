@@ -46,4 +46,5 @@ export interface DomoticzDevice {
   XOffset           : string,
   YOffset           : string,
   idx               : string,
+  ForecastStr       : string
 }

@@ -3,7 +3,7 @@
   "name": "Domoticz HomeScreen",
   "short_name": "DomoticzHomeScreen",
   "start_url": "http://192.168.200.152:5173",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#fff",
   "description": "A readable Hacker News app.",
   "icons": [{
