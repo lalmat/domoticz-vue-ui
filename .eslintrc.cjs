@@ -9,7 +9,17 @@ module.exports = {
     "@vue/eslint-config-typescript/recommended",
   ],
   rules: {
-    // override/add rules settings here, such as:
-    // 'vue/no-unused-vars': 'error'
-  },
+    "key-spacing": ["error", {
+      "multiLine": {
+          "beforeColon" : false,
+          "afterColon"  : true
+
+      },
+      "align": {
+          "beforeColon" : true,
+          "afterColon"  : true,
+          "on"          : "colon"
+      }
+    }]
+  }
 }

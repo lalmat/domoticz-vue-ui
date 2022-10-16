@@ -1,5 +1,5 @@
 export default {
-  username: "Username",
-  password: "Password",
-  connect: "Login",
+  username : "Username",
+  password : "Password",
+  connect  : "Login",
 }

@@ -1,0 +1,158 @@
+{
+  "name": "Default Theme",
+  "classes": {
+    "bgPanel": "fixed bottom-0 top-0 left-0 right-0 rounded-xl drop-shadow-lg bg-white/70 m-2",
+    "devicesGrid": "fixed bottom-8 top-0 left-0 right-0 grid grid-cols-7 grid-row-4 gap-4 m-2",
+    "version": "text-gray-500 absolute bottom-1 w-full text-center font-light italic text-sm"
+  },
+  "devices": [
+    {
+      "type": "server-datetimes",
+      "name": "Horloge",
+      "icon": "/theme/icons/server-datetimes/",
+      "idx": "",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50 col-span-2"
+    },
+    {
+      "type": "home-temp",
+      "name": "Température Maison",
+      "icon": "/theme/icons/home-temp/",
+      "idx" : "603",
+      "refresh": 60,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-power",
+      "name": "Consommation Instantanée",
+      "idx": "",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "camera-carrousel",
+      "name": "Cameras",
+      "idx": "",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50 row-span-2 col-span-3"
+    },
+    {
+      "type": "weather-station",
+      "name": "Station Météo",
+      "idx" : "",
+      "refresh": 0,
+      "slotClass" : "rounded bg-white/50 row-span-2 col-span-2"
+    },
+    {
+      "type": "name-day",
+      "name": "Fêtes & Saints",
+      "idx" : "",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-door",
+      "name": "Porte d'entrée",
+      "icon": "/theme/icons/home-door/door",
+      "idx": "235",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-switch",
+      "icon": "/theme/icons/home-switch/socket",
+      "name": "Radiateur SDB",
+      "idx": "20",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-switch",
+      "icon": "/theme/icons/home-switch/tree",
+      "name": "Prise Sapin",
+      "idx": "154",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-scene",
+      "icon": "eco-power",
+      "name": "Eteindre Accessoires",
+      "idx": "154",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-scene",
+      "icon": "eco-power",
+      "name": "Eteindre Lumières",
+      "idx": "2",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-scene",
+      "icon": "eco-power",
+      "name": "Fermer Volets",
+      "idx": "3",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "security-panel",
+      "icon": "eco-power",
+      "name": "Verouillage Système",
+      "idx": "",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-switch",
+      "icon": "/theme/icons/home-switch/bulb",
+      "name": "Verouillage Système",
+      "idx": "",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "system-config",
+      "icon": "/theme/icons/system-config/settings",
+      "name": "Paramètres système",
+      "idx": "",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-switch",
+      "icon": "/theme/icons/home-switch/socket",
+      "name": "Prise TV",
+      "idx": "323",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-switch",
+      "icon": "/theme/icons/home-switch/bulb",
+      "name": "Lumière Bureau",
+      "idx": "5",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-switch",
+      "icon": "/theme/icons/home-switch/bulb",
+      "name": "Lumière Etage",
+      "idx": "202",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    },
+    {
+      "type": "home-switch",
+      "icon": "/theme/icons/home-switch/bulb",
+      "name": "Lumière Entrée",
+      "idx": "14",
+      "refresh": 0,
+      "slotClass": "rounded bg-white/50"
+    }
+  ]
+}

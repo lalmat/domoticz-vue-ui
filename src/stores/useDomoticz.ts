@@ -1,29 +1,31 @@
+import { DomoticzVersion } from './../interfaces/DomoticzVersions';
 import { Domoticz } from "domoticz-api-linker/src/index.js"
-import { cookiesStorage } from "@ncisrc/cookies-storage"
 import { defineStore } from "pinia"
 import dayjs from "dayjs"
+import { DomoticzDatetimes } from "../interfaces/DomoticzDatetimes"
+import { DomoticzDevice } from "../interfaces/DomoticzDevice"
 
 export const useDomoticz = defineStore("domoticz", {
   state: () => {
     return {
-      api: {},
-      connected: false,
-      server: {
-        host: '',
-        port: '',
-        useSSL: true,
-        username: '',
-        password: '',
-        rememberMe: true
+      api       : null,
+      connected : false,
+      server    : {
+        host       : '',
+        port       : '',
+        useSSL     : true,
+        username   : '',
+        password   : '',
+        rememberMe : true
       },
-      datetime: new Date,
-      version: null,
-      datetimes : null,
-      devicesIdx: [],
-      devices: [],
-      handlers: {
-        version: null,
-        datetime: null
+      datetime       : "",
+      version        : {} as DomoticzVersion,
+      datetimes      : {} as DomoticzDatetimes,
+      devices        : [] as DomoticzDevice[],
+      syncingDevices : false,
+      handlers       : {
+        datetime : {} as ReturnType<typeof setTimeout>,
+        devices  : {} as ReturnType<typeof setTimeout>,
       }
     }
   },
@@ -43,10 +45,10 @@ export const useDomoticz = defineStore("domoticz", {
 
     async connect() {
       this.api = await Domoticz(this.server.host, {
-        port: this.server.port,
-        useSSL: this.server.useSSL,
-        username: this.server.username,
-        password: this.server.password
+        port     : this.server.port,
+        useSSL   : this.server.useSSL,
+        username : this.server.username,
+        password : this.server.password
       });
       const success = await this.api.systemManager.checkCredentials();
       if (success) {
@@ -59,11 +61,11 @@ export const useDomoticz = defineStore("domoticz", {
     // ------------------------------------------------------------------------
 
     async syncVersion() {
-      this.version = await this.api.systemManager.version();
+      this.version = <DomoticzVersion> await this.api.systemManager.version();
     },
 
     async syncDatetimes() {
-      this.datetimes = await this.api.systemManager.datetimes();
+      this.datetimes = <DomoticzDatetimes> await this.api.systemManager.datetimes();
       this.datetime = this.datetimes.ServerTime;
 
       if (this.handlers.datetime != null) {
@@ -76,29 +78,33 @@ export const useDomoticz = defineStore("domoticz", {
     },
 
     async syncDevices() {
-      this.devices = (await this.api.deviceManager.items()).result;
+      if (this.syncingDevices) return;
+
+      this.syncingDevices = true;
+      if (this.handlers.devices) clearTimeout(this.handlers.devices)
+      this.devices = <DomoticzDevice[]> (await this.api.deviceManager.items()).result;
+
+      this.handlers.devices = setTimeout(this.syncDevices, 2000);
+      this.syncingDevices = false;
     },
 
-    findDevice(idx: number) {
-      return this.devices.find( (device) => device.idx == idx);
-    },
-
-    async deviceToggle(idx) {
+    async toggleDevice(idx: string) {
       await this.api.deviceManager.toggle(idx);
       this.syncDevices();
+    },
+
+    findDevice(idx: string) {
+      return this.devices.find( (device) => device.idx == idx);
     },
 
     // ------------------------------------------------------------------------
 
     async settingsSave() {
-      const options = {
-        maxAge: 7776000
-      }
-      return await cookiesStorage.setItem("server", JSON.stringify(this.server), options); // 3 Months
+      localStorage.setItem('server', JSON.stringify(this.server))
     },
 
     async settingsLoad() {
-      const serializedData = await cookiesStorage.getItem("server");
+      const serializedData = localStorage.getItem('server')
       if (serializedData) this.server = JSON.parse(serializedData);
     }
   },

@@ -21,7 +21,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="mx-auto rounded-xl drop-shadow-lg bg-white/70 w-1/3 mt-16 p-16">
+  <div class="mx-auto rounded-xl drop-shadow-lg bg-white/70 sm:w-1/2 2xl:w-1/3 mt-8 p-8">
     <div class="text-center text-2xl font-bold uppercase">{{ $t("theLogin.title") }}</div>
     <div class="mt-6 mb-2 flex">
       <div class="w-1/3 font-bold uppercase">{{ $t("theLogin.server") }}</div>

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Domoticz HomeScreen",
+  "short_name": "DomoticzHomeScreen",
+  "start_url": "http://192.168.200.152:5173",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A readable Hacker News app.",
+  "icons": [{
+    "src": "domoticz.png",
+    "sizes": "512x512",
+    "type": "image/jpeg"
+  }]
+}
