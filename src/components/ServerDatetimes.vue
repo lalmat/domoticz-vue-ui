@@ -28,8 +28,8 @@ const time = computed(() => {
 })
 </script>
 <template>
-  <div v-if="domoticz.datetimes" class="absolute w-full h-full">
-    <div class="capitalize text-center mt-2 dz-server-dt-date">
+  <div v-if="domoticz.datetimes" class="absolute top-0 left-0 w-full h-full">
+    <div class="capitalize text-center dz-server-dt-date">
       {{ date }}
     </div>
 
@@ -37,17 +37,17 @@ const time = computed(() => {
       {{ time }}
     </div>
 
-    <div class="flex">
+    <div class="flex dz-server-dt-details">
       <div class="w-1/3 text-center">
-        <img :src="`${device.icon}/sunrise.svg`" class="inline align-text-bottom dz-server-dt-icon" />
+        <img :src="`${device.icon}/sunrise.svg`" class="inline align-bottom dz-server-dt-icon" />
         <span class="dz-server-dt-text-small">{{ domoticz.datetimes.Sunrise }}</span>
       </div>
       <div class="w-1/3 text-center">
-        <img :src="`${device.icon}/day_duration.svg`" class="inline align-text-bottom dz-server-dt-icon" />
+        <img :src="`${device.icon}/day_duration.svg`" class="inline align-bottom dz-server-dt-icon" />
         <span class="dz-server-dt-text-small">{{ domoticz.datetimes.DayLength }}</span>
       </div>
       <div class="w-1/3 text-center">
-        <img :src="`${device.icon}/sunset.svg`" class="inline align-text-bottom dz-server-dt-icon" />
+        <img :src="`${device.icon}/sunset.svg`" class="inline align-bottom dz-server-dt-icon" />
         <span class="dz-server-dt-text-small">{{ domoticz.datetimes.Sunset }}</span>
       </div>
     </div>
@@ -55,17 +55,22 @@ const time = computed(() => {
 </template>
 <style>
 .dz-server-dt-date {
-  font-size:1.7vw;
+  margin-top:1vh;
+  font-size: 1.5vw;
 }
 .dz-server-dt-time {
-  font-size:3.25vw;
-  @apply font-bold;
+  margin-top:0.5vh;
+  font-size: 3vw;
+  font-weight: bold;
+}
+.dz-server-dt-details {
+  margin-top:0.5vh;
 }
 .dz-server-dt-icon {
-  height:2.5vw;
+  height:2.4vw;
 }
 .dz-server-dt-text-small {
-  font-size:3.5vh;
+  font-size:1.5vw;
   padding-left:0.5vw;
 }
 </style>

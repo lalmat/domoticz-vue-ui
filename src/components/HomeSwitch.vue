@@ -31,7 +31,7 @@ function switchState() {
     class="absolute top-0 left-0 grid grid-rows-2 content-around h-full w-full cursor-pointer bg-yellow-700/20"
     :class="{'dz-home-switch-active': isActive, 'dz-home-switch-inactive': !isActive}"
     @click="switchState()">
-    <div class="text-center align-bottom dz-home-switch-text">{{ device.name }}</div>
+    <div class="text-center dz-home-switch-text border-1 border-red-600">{{ device.name }}</div>
     <div class="text-center">
       <img :src="`${device.icon}_${domoticzDevice.Status.toLowerCase()}.svg`" class="inline dz-home-switch-icon" />
     </div>
@@ -46,11 +46,15 @@ function switchState() {
   @apply  shadow-xl
 }
 .dz-home-switch-text {
-  padding:1.5vh;
-  font-size: 1.5vw;
-  font-weight: bold;
+  margin-top:2vh;
+  padding-left:1vw;
+  padding-right:1vw;
+  height:8vh;
+  font-size: 3vh;
 }
 .dz-home-switch-icon {
-  height:8vh;
+  margin-top:1vh;
+  height:7.5vh;
+
 }
 </style>
